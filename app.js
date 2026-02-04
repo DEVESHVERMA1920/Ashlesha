@@ -198,7 +198,18 @@ setTimeout(()=>h.remove(),4000);
 showPhotos.addEventListener("click",()=>{
 magic.classList.add("hidden");
 gallery.classList.remove("hidden");
+loadPhotos();
 });
+
+function loadPhotos(){
+gallery.innerHTML="";
+
+for(let i=1;i<=15;i++){
+let img=document.createElement("img");
+img.src=`images/ashu${i}.jpg`;
+gallery.appendChild(img);
+}
+}
 
 // 🎆 Fireworks (simple)
 const canvas=document.getElementById("fireworks");
