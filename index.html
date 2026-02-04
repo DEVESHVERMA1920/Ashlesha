@@ -8,32 +8,40 @@
 <body>
 
 <audio id="music" loop>
-    <source src="music/love.mp3" type="audio/mpeg">
+  <source src="music/love.mp3" type="audio/mpeg">
 </audio>
 
-<div class="container" id="main">
-
+<div id="main" class="container">
 <h1>Ashu ❤️ Will you be my Valentine? 🌹</h1>
-
 <div class="buttons">
-    <button id="yesBtn">YES 💖</button>
-    <button id="noBtn">NO 😜</button>
+<button id="yesBtn">YES 💖</button>
+<button id="noBtn">NO 😜</button>
+</div>
 </div>
 
+<!-- GAME 1 -->
+<div id="heartGame" class="hidden">
+<h2>Catch 5 Hearts for Devesh ❤️</h2>
+<p id="tease1"></p>
 </div>
 
+<!-- GAME 2 -->
+<div id="pandaGame" class="hidden">
+<h2>Find your Panda 🐼</h2>
+<div class="cards" id="cards"></div>
+<p id="tease2"></p>
+</div>
+
+<!-- MAGIC -->
 <div id="magic" class="hidden">
-
 <h2 id="typeMessage"></h2>
-
 <button id="showPhotos">See Our Memories 📸</button>
-
 </div>
 
 <div id="gallery" class="hidden floating">
-    <img src="images/ashu1.jpg">
-    <img src="images/ashu2.jpg">
-    <img src="images/ashu3.jpg">
+<img src="images/ashu1.jpg">
+<img src="images/ashu2.jpg">
+<img src="images/ashu3.jpg">
 </div>
 
 <canvas id="fireworks"></canvas>
