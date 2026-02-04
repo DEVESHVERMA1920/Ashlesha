@@ -14,7 +14,6 @@ const tease2=document.getElementById("tease2");
 const typeMessage=document.getElementById("typeMessage");
 const showPhotos=document.getElementById("showPhotos");
 
-let heartCount=0;
 
 const teasing=[
 "Arre Panda itna slow 😜",
@@ -85,7 +84,7 @@ updateScore();
 tease1.innerText=teasing[Math.floor(Math.random()*teasing.length)];
 });
 
-document.body.appendChild(heart);
+heartGame.appendChild(heart);
 setTimeout(()=>heart.remove(),3000);
 
 }else{
@@ -102,7 +101,7 @@ updateScore();
 tease1.innerText="Ohooo Devesh mil gaya 😜 Minus one!";
 });
 
-document.body.appendChild(bomb);
+heartGame.appendChild(bomb);
 setTimeout(()=>bomb.remove(),3000);
 }
 }
