@@ -16,6 +16,7 @@ font-size:3rem;
 }
 
 .buttons button{
+touch-action: manipulation;
 font-size:1.6rem;
 padding:15px 40px;
 border:none;
@@ -144,4 +145,22 @@ cursor:pointer;
 z-index:9999;
 animation:move 3s linear forwards;
 }
+#main {
+position: relative;
+z-index: 10;
+}
 
+.buttons button {
+position: relative;
+z-index: 20;
+}
+
+canvas {
+pointer-events: none;
+z-index: 1;
+}
+
+#heartGame, #pandaGame, #magic, #gallery {
+position: relative;
+z-index: 5;
+}
