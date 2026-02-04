@@ -8,21 +8,23 @@ const pandaGame=document.getElementById("pandaGame");
 const magic=document.getElementById("magic");
 const gallery=document.getElementById("gallery");
 
+const scoreEl=document.getElementById("score");
+const timerEl=document.getElementById("timer");
+
 const tease1=document.getElementById("tease1");
 const tease2=document.getElementById("tease2");
 
 const typeMessage=document.getElementById("typeMessage");
 const showPhotos=document.getElementById("showPhotos");
 
-
 const teasing=[
 "Arre Panda itna slow 😜",
-"Catch karo Cutuu ❤️",
-"Devesh is faster than you 😂",
+"Heart pakdo Cutuu ❤️",
+"Devesh faster hai 😂",
 "Come on Sitara ⭐"
 ];
 
-// NO runs
+// NO runs away
 noBtn.addEventListener("mouseover",()=>{
 noBtn.style.position="absolute";
 noBtn.style.left=Math.random()*80+"vw";
@@ -37,26 +39,23 @@ startFireworks();
 startHeartGame();
 });
 
-// ❤️ HEART GAME
+// ---------------- HEART GAME ----------------
+
 let score=0;
 let timeLeft=30;
-let gameInterval;
-let timerInterval;
+let gameInterval,timerInterval;
 
 function startHeartGame(){
 heartGame.classList.remove("hidden");
 score=0;
 timeLeft=30;
-
-updateScore();
-updateTimer();
+updateHUD();
 
 gameInterval=setInterval(spawnItem,700);
 
 timerInterval=setInterval(()=>{
 timeLeft--;
-updateTimer();
-
+updateHUD();
 if(timeLeft<=0){
 clearInterval(gameInterval);
 clearInterval(timerInterval);
@@ -66,10 +65,13 @@ startPandaGame();
 },1000);
 }
 
-function spawnItem(){
+function updateHUD(){
+scoreEl.innerText="Score: "+score;
+timerEl.innerText="Time: "+timeLeft;
+}
 
-// 70% heart , 30% bomb (your photo)
-let isHeart = Math.random() < 0.7;
+function spawnItem(){
+let isHeart=Math.random()<0.7;
 
 if(isHeart){
 let heart=document.createElement("div");
@@ -77,66 +79,46 @@ heart.className="heart";
 heart.innerHTML="❤️";
 heart.style.left=Math.random()*90+"vw";
 
-heart.addEventListener("click",catchHeart);
-heart.addEventListener("touchstart",catchHeart);
-
 function catchHeart(){
-    this.remove();
-    score++;
-    updateScore();
-    tease1.innerText=teasing[Math.floor(Math.random()*teasing.length)];
-}
 heart.remove();
 score++;
-updateScore();
+updateHUD();
 tease1.innerText=teasing[Math.floor(Math.random()*teasing.length)];
-});
+}
+
+heart.addEventListener("click",catchHeart);
+heart.addEventListener("touchstart",catchHeart);
 
 heartGame.appendChild(heart);
 setTimeout(()=>heart.remove(),3000);
 
 }else{
-
 let bomb=document.createElement("img");
 bomb.src="images/dev_bomb.png";
 bomb.className="bomb";
 bomb.style.left=Math.random()*90+"vw";
 
-bomb.addEventListener("click",hitBomb);
-bomb.addEventListener("touchstart",hitBomb);
-
 function hitBomb(){
-    this.remove();
-    score--;
-    updateScore();
-    tease1.innerText="Ohooo Devesh mil gaya 😜 Minus one!";
-}
 bomb.remove();
 score--;
-updateScore();
-tease1.innerText="Ohooo Devesh mil gaya 😜 Minus one!";
-});
+updateHUD();
+tease1.innerText="Ohooo Devesh mil gaya 😜";
+}
+
+bomb.addEventListener("click",hitBomb);
+bomb.addEventListener("touchstart",hitBomb);
 
 heartGame.appendChild(bomb);
 setTimeout(()=>bomb.remove(),3000);
 }
 }
 
-function updateScore(){
-document.getElementById("score").innerText="Score: "+score;
-}
+// ---------------- PANDA GAME ----------------
 
-function updateTimer(){
-document.getElementById("timer").innerText="Time: "+timeLeft;
-}
-
-// 🐼 PANDA GAME
 function startPandaGame(){
 pandaGame.classList.remove("hidden");
-
 const cards=document.getElementById("cards");
 cards.innerHTML="";
-
 let pandaIndex=Math.floor(Math.random()*9);
 
 for(let i=0;i<9;i++){
@@ -147,7 +129,7 @@ card.innerHTML="❓";
 card.onclick=()=>{
 if(i===pandaIndex){
 card.innerHTML="🐼";
-tease2.innerText="Yayyy! You found yourself Cutuu 💖";
+tease2.innerText="You found yourself Cutuu 💖";
 setTimeout(showMagic,1000);
 }else{
 card.innerHTML="❌";
@@ -159,7 +141,8 @@ cards.appendChild(card);
 }
 }
 
-// 💖 MAGIC
+// ---------------- MAGIC ----------------
+
 function showMagic(){
 pandaGame.classList.add("hidden");
 magic.classList.remove("hidden");
@@ -167,7 +150,6 @@ typeWriter();
 heartsWithName();
 }
 
-// ⌨️ TYPEWRITER
 const message=
 "My Panda 🐼\nMy Sitara ⭐\nMy Cutuu 💖\n\nAshlesha ❤️\nI want every Valentine with YOU 💕";
 
@@ -180,7 +162,6 @@ setTimeout(typeWriter,80);
 }
 }
 
-// 💖 HEARTS WITH NAME
 function heartsWithName(){
 setInterval(()=>{
 let h=document.createElement("div");
@@ -194,7 +175,8 @@ setTimeout(()=>h.remove(),4000);
 },300);
 }
 
-// 📸 Photos
+// ---------------- PHOTOS ----------------
+
 showPhotos.addEventListener("click",()=>{
 magic.classList.add("hidden");
 gallery.classList.remove("hidden");
@@ -203,7 +185,6 @@ loadPhotos();
 
 function loadPhotos(){
 gallery.innerHTML="";
-
 for(let i=1;i<=15;i++){
 let img=document.createElement("img");
 img.src=`images/ashu${i}.jpg`;
@@ -211,7 +192,8 @@ gallery.appendChild(img);
 }
 }
 
-// 🎆 Fireworks (simple)
+// ---------------- FIREWORKS ----------------
+
 const canvas=document.getElementById("fireworks");
 const ctx=canvas.getContext("2d");
 canvas.width=innerWidth;
@@ -249,7 +231,7 @@ requestAnimationFrame(animate);
 }
 animate();
 
-// rise animation
+// floating heart animation
 const style=document.createElement("style");
 style.innerHTML=`
 @keyframes rise{
