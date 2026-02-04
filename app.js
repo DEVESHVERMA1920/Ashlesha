@@ -48,7 +48,7 @@ heart.className="heart";
 heart.innerHTML="❤️";
 heart.style.left=Math.random()*90+"vw";
 
-heart.onclick=()=>{
+heart.addEventListener("click", ()=>{
 heart.remove();
 heartCount++;
 tease1.innerText=teasing[Math.floor(Math.random()*teasing.length)];
