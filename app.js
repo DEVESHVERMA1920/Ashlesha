@@ -77,7 +77,15 @@ heart.className="heart";
 heart.innerHTML="❤️";
 heart.style.left=Math.random()*90+"vw";
 
-heart.addEventListener("click",()=>{
+heart.addEventListener("click",catchHeart);
+heart.addEventListener("touchstart",catchHeart);
+
+function catchHeart(){
+    this.remove();
+    score++;
+    updateScore();
+    tease1.innerText=teasing[Math.floor(Math.random()*teasing.length)];
+}
 heart.remove();
 score++;
 updateScore();
