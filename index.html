@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>For My Panda 🐼</title>
@@ -11,7 +11,7 @@
   <source src="music/love.mp3" type="audio/mpeg">
 </audio>
 
-<div id="main" class="container">
+<div id="main" class="screen">
 <h1>Ashu ❤️ Will you be my Valentine? 🌹</h1>
 <div class="buttons">
 <button id="yesBtn">YES 💖</button>
@@ -19,23 +19,22 @@
 </div>
 </div>
 
-<!-- GAME 1 -->
-<div id="heartGame" class="hidden">
-<h2>Catch 5 Hearts for Devesh ❤️</h2>
+<div id="heartGame" class="screen hidden">
+<h2>Catch Hearts for Devesh ❤️</h2>
+<div class="hud">
+<span id="score">Score: 0</span>
+<span id="timer">Time: 30</span>
+</div>
 <p id="tease1"></p>
 </div>
-  <div class="scoreboard" id="score">Score: 0</div>
-<div class="timer" id="timer">Time: 30</div>
 
-<!-- GAME 2 -->
-<div id="pandaGame" class="hidden">
+<div id="pandaGame" class="screen hidden">
 <h2>Find your Panda 🐼</h2>
-<div class="cards" id="cards"></div>
+<div id="cards" class="cards"></div>
 <p id="tease2"></p>
 </div>
 
-<!-- MAGIC -->
-<div id="magic" class="hidden">
+<div id="magic" class="screen hidden">
 <h2 id="typeMessage"></h2>
 <button id="showPhotos">See Our Memories 📸</button>
 </div>
