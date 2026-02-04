@@ -143,11 +143,3 @@ z-index:9999;
 animation:move 3s linear forwards;
 }
 
-.heart{
-position:fixed;
-font-size:40px;
-cursor:pointer;
-z-index:9999;
-user-select:none;
-animation:move 3s linear forwards;
-}
