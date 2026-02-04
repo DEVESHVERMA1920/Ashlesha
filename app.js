@@ -39,31 +39,80 @@ startHeartGame();
 });
 
 // ❤️ HEART GAME
+let score=0;
+let timeLeft=30;
+let gameInterval;
+let timerInterval;
+
 function startHeartGame(){
 heartGame.classList.remove("hidden");
+score=0;
+timeLeft=30;
 
-let interval=setInterval(()=>{
+updateScore();
+updateTimer();
+
+gameInterval=setInterval(spawnItem,700);
+
+timerInterval=setInterval(()=>{
+timeLeft--;
+updateTimer();
+
+if(timeLeft<=0){
+clearInterval(gameInterval);
+clearInterval(timerInterval);
+heartGame.classList.add("hidden");
+startPandaGame();
+}
+},1000);
+}
+
+function spawnItem(){
+
+// 70% heart , 30% bomb (your photo)
+let isHeart = Math.random() < 0.7;
+
+if(isHeart){
 let heart=document.createElement("div");
 heart.className="heart";
 heart.innerHTML="❤️";
 heart.style.left=Math.random()*90+"vw";
 
-heart.addEventListener("click", ()=>{
+heart.addEventListener("click",()=>{
 heart.remove();
-heartCount++;
+score++;
+updateScore();
 tease1.innerText=teasing[Math.floor(Math.random()*teasing.length)];
-
-if(heartCount>=5){
-clearInterval(interval);
-heartGame.classList.add("hidden");
-startPandaGame();
-}
-};
+});
 
 document.body.appendChild(heart);
-
 setTimeout(()=>heart.remove(),3000);
-},700);
+
+}else{
+
+let bomb=document.createElement("img");
+bomb.src="images/dev_bomb.png";
+bomb.className="bomb";
+bomb.style.left=Math.random()*90+"vw";
+
+bomb.addEventListener("click",()=>{
+bomb.remove();
+score--;
+updateScore();
+tease1.innerText="Ohooo Devesh mil gaya 😜 Minus one!";
+});
+
+document.body.appendChild(bomb);
+setTimeout(()=>bomb.remove(),3000);
+}
+}
+
+function updateScore(){
+document.getElementById("score").innerText="Score: "+score;
+}
+
+function updateTimer(){
+document.getElementById("timer").innerText="Time: "+timeLeft;
 }
 
 // 🐼 PANDA GAME
