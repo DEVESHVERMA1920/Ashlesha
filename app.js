@@ -102,7 +102,15 @@ bomb.src="images/dev_bomb.png";
 bomb.className="bomb";
 bomb.style.left=Math.random()*90+"vw";
 
-bomb.addEventListener("click",()=>{
+bomb.addEventListener("click",hitBomb);
+bomb.addEventListener("touchstart",hitBomb);
+
+function hitBomb(){
+    this.remove();
+    score--;
+    updateScore();
+    tease1.innerText="Ohooo Devesh mil gaya 😜 Minus one!";
+}
 bomb.remove();
 score--;
 updateScore();
