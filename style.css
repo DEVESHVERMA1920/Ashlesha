@@ -48,7 +48,7 @@ margin-top:20px;
 
 .heart{
 position:fixed;
-font-size:40px;
+font-size:55px;
 cursor:pointer;
 z-index:10;
 animation:fall 3s linear forwards;
