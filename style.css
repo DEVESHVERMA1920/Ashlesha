@@ -79,15 +79,17 @@ font-size:1.8rem;
 }
 
 .heart{
-position:absolute;
+position:fixed;
 font-size:40px;
 cursor:pointer;
-animation:move 3s linear infinite;
+z-index:9999;
+user-select:none;
+animation:move 3s linear forwards;
 }
 
 @keyframes move{
-from{top:100vh;}
-to{top:-10vh;}
+from{top:90vh;}
+to{top:-20vh;}
 }
 
 .cards{
