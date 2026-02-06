@@ -190,7 +190,7 @@ function showMagic() {
 }
 
 const message =
-  "My Panda 🐼\nMy Sitara ⭐\nMy Cutuu 💖\n\nAshlesha ❤️\nI want every Valentine with YOU 💕";
+  "My Panda 🐼\nMy Sitara ⭐\nMy Cutuu 💖\n\nAshu ❤️\nI want every Valentine with YOU 💕";
 
 let idx = 0;
 
